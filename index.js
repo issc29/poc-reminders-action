@@ -9,6 +9,9 @@ const ReviewSuccessColumnID = core.getInput('ReviewSuccessColumnID');
 
 const reviewSuccessReminderDuration1 = 14
 const reviewSuccessReminderDuration2 = 30
+const day21Duration = 0
+const day45Duration = 45
+const day90Duration = 90
 
 run();
 
@@ -96,9 +99,9 @@ async function commentOnDuration(poc, reminder){
 
 async function labelAllPOCSBasedOnDuration(pocs){
   for (const poc of pocs) {
-    await addLabelBasedOnDuration(poc, 21)
-    await addLabelBasedOnDuration(poc, 45)
-    await addLabelBasedOnDuration(poc, 90)
+    await addLabelBasedOnDuration(poc, day21Duration)
+    await addLabelBasedOnDuration(poc, day45Duration)
+    await addLabelBasedOnDuration(poc, day90Duration)
   }
 }
 
@@ -112,8 +115,8 @@ async function addLabelBasedOnDuration(poc, duration) {
 
 function getLabelID(duration) {
   var labelIDs = {}
-  labelIDs[0] = core.getInput('day21LabelID');
-  labelIDs[45] = core.getInput('day45LabelID');
-  labelIDs[90] = core.getInput('day90LabelID');
+  labelIDs[day21Duration] = core.getInput('day21LabelID');
+  labelIDs[day45Duration] = core.getInput('day45LabelID');
+  labelIDs[day90Duration] = core.getInput('day90LabelID');
   return labelIDs[duration]
 }
