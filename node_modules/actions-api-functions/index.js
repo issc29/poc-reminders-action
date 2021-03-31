@@ -21,7 +21,7 @@ module.exports = class functions {
     }
     const result = await this.octokit.graphql(addCommentMutation, variables)
     if (!result) {
-      this.core.setFailed('GraphQL request failed')
+      this.core.setFailed('commentOnIssue GraphQL request failed')
     } 
 
     return result
@@ -43,7 +43,7 @@ module.exports = class functions {
     }
     const result = await this.octokit.graphql(getIssueInfoQuery, variables)
     if (!result) {
-      this.core.setFailed('GraphQL request failed')
+      this.core.setFailed('getIssueInfo GraphQL request failed')
     } 
     else {
       console.log(`Title: ${result.node.title}`)
@@ -68,11 +68,60 @@ module.exports = class functions {
     }
     const result = await this.octokit.graphql(addLabelMutation, variables)
     if (!result) {
-      this.core.setFailed('GraphQL request failed')
+      this.core.setFailed('addLabelToIssue GraphQL request failed')
     } 
     else {
       console.log(`Added Label: nodeId: ${result.addLabelsToLabelable.labelable.id}`)
     } 
     return result.addLabelsToLabelable.labelable
   }
+
+  async getIssueLastTimelineEvent(projectColumn) {
+
+    const getLastTimelineEvent = `query($projectColumnID: ID!) { 
+      node(id: $projectColumnID) { 
+        ... on ProjectColumn { 
+          name
+          cards  {
+            nodes {
+              content {
+                ... on Issue {
+                  url
+                  id
+                  timelineItems(last: 1, itemTypes: MOVED_COLUMNS_IN_PROJECT_EVENT) {
+                    nodes {
+                      __typename
+                      ... on MovedColumnsInProjectEvent {
+                        previousProjectColumnName
+                        createdAt
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }`;
+
+    const variables = {
+      projectColumnID: projectColumn,
+      headers: {
+        Accept: `application/vnd.github.starfox-preview+json`
+      }
+    }
+    const result = await this.octokit.graphql(getLastTimelineEvent, variables)
+    if (!result) {
+      this.core.setFailed('getIssueLastTimelineEvent GraphQL request failed')
+    } 
+    else {
+      console.log(`Got Issue Last Timeline Event`)
+    } 
+    return result
+  }
+
+
+
+
 }

@@ -11,7 +11,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "dedent": "^0.7.0",
-    "actions-api-functions": "git+https://github.com/issc29/actions-api-functions.git"
+    "actions-api-functions": "git+https://github.com/issc29/actions-api-functions.git",
+    "dedent": "^0.7.0"
   }
 }
