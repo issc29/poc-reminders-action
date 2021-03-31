@@ -50,10 +50,11 @@ function getPOCDurations(projectCards){
   console.log(`POC Days per Issue:`)
   for (const projectCard of projectCards) {
     console.log(projectCard.content.timelineItems.nodes)
-    //if(projectCard.content.timelineItems.nodes)
-    var POCdurationDays = getIssueDuration(projectCard.content.timelineItems.nodes[0].createdAt)
-    pocs.push({id:node.content.id, url: node.content.url, duration: POCdurationDays})
-    console.log(`${node.content.url} : ${POCdurationDays} days`)
+    if(projectCard.content.timelineItems.nodes > 0) {
+      var POCdurationDays = getIssueDuration(projectCard.content.timelineItems.nodes[0].createdAt)
+      pocs.push({id:node.content.id, url: node.content.url, duration: POCdurationDays})
+      console.log(`${node.content.url} : ${POCdurationDays} days`)
+    }
   }
   return pocs
 }
