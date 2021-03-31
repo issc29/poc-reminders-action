@@ -32,8 +32,8 @@ function getReviewSuccessReminders(){
   return reviewSuccessReminders
 }
 
-async function runPOCReminders(projectColumnData, reminders){
-  const projectColumnData = await functions.getIssueLastTimelineEvent(projectColumnData)
+async function runPOCReminders(columnID, reminders){
+  const projectColumnData = await functions.getIssueLastTimelineEvent(columnID)
   var pocs = getPOCDurations(projectColumnData.node.cards.nodes)
 
   await addComments(pocs, reminders)
