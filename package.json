@@ -1,0 +1,17 @@
+{
+  "name": "poc-reminders-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "dedent": "^0.7.0",
+    "actions-api-functions": "git+https://github.com/issc29/actions-api-functions.git"
+  }
+}

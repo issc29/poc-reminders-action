@@ -1,0 +1,32 @@
+name: 'POC Reminders Action'
+description: 'Reminders for active Trials'
+inputs:
+  github-token:  
+    description: 'Token to use'
+    required: true
+  InProgressColumnID:  
+    description: 'Node ID of In Progress project column'
+    required: true
+  ReviewSuccessColumnID:  
+    description: 'Node ID of Review Success Criteria project column'
+    required: true
+  day21LabelID:
+    description: 'Node ID of 21day+ label'
+    required: true
+  day45LabelID:
+    description: 'Node ID of 45day+ label'
+    required: true
+  day90LabelID:
+    description: 'Node ID of 90day+ label'
+    required: true
+  midpointDuration:
+    description: 'Number of Days to Comment on Midpoint'
+    required: false
+    default: 11
+  endDuration:
+    description: 'Number of Days to Comment on Endpoint'
+    required: false
+    default: 21
+runs:
+  using: 'node12'
+  main: 'index.js'
