@@ -18,8 +18,10 @@ async function run() {
 
 function getInProgressReminders(){
   var inProgressReminders = []
-  inProgressReminders.push({duration: 11, comment: `:wave: Midpoint Check-in:\n* How is the POC progressing?\n* How many repos has the customer onboarded?\n* Is there anything you need help with?`})
-  inProgressReminders.push({duration: 21, comment: `:wave: @issc29 POC duration has reached 21 days`})
+  const midpointDuration = core.getInput('midpointDuration');
+  const endDuration  = core.getInput('endDuration');
+  inProgressReminders.push({duration: midpointDuration, comment: `:wave: Midpoint Check-in:\n* How is the POC progressing?\n* How many repos has the customer onboarded?\n* Is there anything you need help with?`})
+  inProgressReminders.push({duration: endDuration, comment: `:wave: @issc29 POC duration has reached 21 days`})
   return inProgressReminders
 }
 
