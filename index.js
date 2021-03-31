@@ -32,7 +32,7 @@ function getInProgressReminders(){
 
 function getReviewSuccessReminders(){
   var reviewSuccessReminders = []
-  reviewSuccessReminders.push({duration: 14, comment: `:wave: This POC has been in **Completed: Review Success Criteria** for 14 days.\n\nIs there anything you need help with?`})
+  reviewSuccessReminders.push({duration: 0, comment: `:wave: This POC has been in **Completed: Review Success Criteria** for 14 days.\n\nIs there anything you need help with?`})
   reviewSuccessReminders.push({duration: 30, comment: `:wave: This POC has been in **Completed: Review Success Criteria** for 30 days.\n\nIs there anything you need help with?`})
   return reviewSuccessReminders
 }
