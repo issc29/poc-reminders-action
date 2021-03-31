@@ -49,7 +49,6 @@ function getPOCDurations(projectCards){
   var pocs = [];
   console.log(`POC Days per Issue:`)
   for (const projectCard of projectCards) {
-    console.log(projectCard.content.timelineItems)
     const timelineItems = projectCard.content.timelineItems.nodes
     if(timelineItems.length > 0) {
       pocs.push(getIssueInfo(projectCard))
