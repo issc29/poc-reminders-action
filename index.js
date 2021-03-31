@@ -11,10 +11,14 @@ run();
 
 async function run() {
 
-  const inProgressReminders = getInProgressReminders()
-  await runPOCReminders(InProgressColumnID, inProgressReminders)
-  const reviewSuccessReminders = getReviewSuccessReminders()
-  await runPOCReminders(ReviewSuccessColumnID,reviewSuccessReminders)
+  try {
+    const inProgressReminders = getInProgressReminders()
+    await runPOCReminders(InProgressColumnID, inProgressReminders)
+    const reviewSuccessReminders = getReviewSuccessReminders()
+    await runPOCReminders(ReviewSuccessColumnID,reviewSuccessReminders)
+  } catch (error) {
+    core.setFailed(error.message);
+  }
 }
 
 function getInProgressReminders(){
@@ -42,6 +46,7 @@ async function runPOCReminders(columnID, reminders){
 }
 
 function getPOCDurations(projectCards){
+  console.log(projectCards)
   var pocs = [];
   console.log(`POC Days per Issue:`)
   for (const projectCard of projectCards) {
