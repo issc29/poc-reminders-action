@@ -7,6 +7,9 @@ var functions = new functionsLib(octokit, core)
 const InProgressColumnID = core.getInput('InProgressColumnID');
 const ReviewSuccessColumnID = core.getInput('ReviewSuccessColumnID');
 
+const reviewSuccessReminderDuration1 = 14
+const reviewSuccessReminderDuration2 = 0
+
 run();
 
 async function run() {
@@ -32,8 +35,8 @@ function getInProgressReminders(){
 
 function getReviewSuccessReminders(){
   var reviewSuccessReminders = []
-  reviewSuccessReminders.push({duration: 0, comment: `:wave: This POC has been in **Completed: Review Success Criteria** for 14 days.\n\nIs there anything you need help with?`})
-  reviewSuccessReminders.push({duration: 30, comment: `:wave: This POC has been in **Completed: Review Success Criteria** for 30 days.\n\nIs there anything you need help with?`})
+  reviewSuccessReminders.push({duration: reviewSuccessReminderDuration1, comment: `:wave: This POC has been in **Completed: Review Success Criteria** for ${reviewSuccessReminderDuration1} days.\n\nIs there anything you need help with?`})
+  reviewSuccessReminders.push({duration: reviewSuccessReminderDuration2, comment: `:wave: This POC has been in **Completed: Review Success Criteria** for ${reviewSuccessReminderDuration2} days.\n\nIs there anything you need help with?`})
   return reviewSuccessReminders
 }
 
