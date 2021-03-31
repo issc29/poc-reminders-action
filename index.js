@@ -10,8 +10,8 @@ const ReviewSuccessColumnID = core.getInput('ReviewSuccessColumnID');
 const reviewSuccessReminderDuration1 = 14
 const reviewSuccessReminderDuration2 = 30
 const day21Duration = 21
-const day45Duration = 0
-const day90Duration = 90
+const day45Duration = 45
+const day90Duration = 0
 
 run();
 
