@@ -8,7 +8,7 @@ const InProgressColumnID = core.getInput('InProgressColumnID');
 const ReviewSuccessColumnID = core.getInput('ReviewSuccessColumnID');
 
 const reviewSuccessReminderDuration1 = 14
-const reviewSuccessReminderDuration2 = 0
+const reviewSuccessReminderDuration2 = 30
 
 run();
 
@@ -112,7 +112,7 @@ async function addLabelBasedOnDuration(poc, duration) {
 
 function getLabelID(duration) {
   var labelIDs = {}
-  labelIDs[21] = core.getInput('day21LabelID');
+  labelIDs[0] = core.getInput('day21LabelID');
   labelIDs[45] = core.getInput('day45LabelID');
   labelIDs[90] = core.getInput('day90LabelID');
   return labelIDs[duration]
