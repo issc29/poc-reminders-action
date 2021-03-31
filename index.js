@@ -48,10 +48,10 @@ async function runPOCReminders(columnID, reminders){
 function getPOCDurations(projectCards){
   var pocs = [];
   console.log(`POC Days per Issue:`)
-  console.log(projectCards)
   for (const projectCard of projectCards) {
+    console.log(projectCard.content.timelineItems)
     const timelineItems = projectCard.content.timelineItems.nodes
-    if(timelineItems > 0) {
+    if(timelineItems.length > 0) {
       pocs.push(getIssueInfo(projectCard))
     }
   }
