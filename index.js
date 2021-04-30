@@ -11,7 +11,7 @@ const reviewSuccessReminderDuration1 = 14
 const reviewSuccessReminderDuration2 = 30
 const day21Duration = 21
 const day45Duration = 45
-const day90Duration = 0
+const day90Duration = 90
 
 run();
 
@@ -108,6 +108,7 @@ async function labelAllPOCSBasedOnDuration(pocs){
 async function addLabelBasedOnDuration(poc, duration) {
   if (poc.duration == duration) {
     const labelID = getLabelID(duration)
+    console.log(`Adding label: ${labelID} to POC: ${poc.url} : ${poc.id} for duration: ${duration}`)
     await functions.addLabelToIssue(poc.id, labelID)
   }
 
